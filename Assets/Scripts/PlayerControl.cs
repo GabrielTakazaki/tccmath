@@ -21,6 +21,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = PlayerPrefs.GetInt("score");
     }
 
     // Update is called once per frame
@@ -50,7 +51,7 @@ public class PlayerControl : MonoBehaviour
             PlayerPrefs.SetInt("recorde", score);
         }
         PlayerPrefs.SetInt("score", score);
-            SceneManager.LoadScene("gameover");
+        SceneManager.LoadScene("mathematic");
     }
     public void addScore() {
         score++;

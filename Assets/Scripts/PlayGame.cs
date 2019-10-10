@@ -11,6 +11,7 @@ public class PlayGame : MonoBehaviour
     void Start()
     {        
         recorde.text = PlayerPrefs.GetInt("recorde").ToString();
+        PlayerPrefs.SetInt("score", 0);
     }
 
     // Update is called once per frame

@@ -17,7 +17,7 @@ public class GameOverControl : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1")){
-            SceneManager.LoadScene("playgame");
+            SceneManager.LoadScene("startgame");
         }
     }
 }
