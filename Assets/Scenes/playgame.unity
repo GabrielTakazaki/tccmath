@@ -254,7 +254,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4280295456
+    rgba: 4294967295
 --- !u!23 &39340257
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
   maxHeight: -0.91
   minHeight: -2.13
   rateSpawn: 1
-  maxBloco: 10
+  maxBloco: 5
   prefab: {fileID: 4086325365436598436, guid: 29b65587e94c4a14dab6e87647646cb5, type: 3}
   bloco: []
 --- !u!4 &1491016673
@@ -476,7 +476,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4280295456
+    rgba: 4294967295
 --- !u!23 &1544231055
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -583,12 +583,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bba4f93472e974f4e8b85964d4aefb30, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a0854c27f10ebf4daf68691110f644a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.2, y: 3.49}
+  m_Size: {x: 6.26, y: 4.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -602,8 +602,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582591893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.157, y: -1.53, z: 1}
-  m_LocalScale: {x: 1.7222663, y: 0.6326238, z: 1}
+  m_LocalPosition: {x: -0.157, y: -1.599, z: 1}
+  m_LocalScale: {x: 1.7222663, y: 0.599778, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -676,12 +676,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f461255dff9d3d54c8ba96346450d2ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7193511f16260b843a198a7f324dfd72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.8, y: 3.02}
+  m_Size: {x: 5.84, y: 5.83}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -695,8 +695,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711867154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.153, y: 1.217, z: 2}
-  m_LocalScale: {x: 1.5717237, y: 1.465569, z: 1}
+  m_LocalPosition: {x: -0.187, y: 0.359, z: 2}
+  m_LocalScale: {x: 1.8656517, y: 1.0534115, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3

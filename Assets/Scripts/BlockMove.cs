@@ -23,15 +23,15 @@ public class BlockMove : MonoBehaviour
     void Update()
     {
         if (player.score > 30 ) {
-            speed = -14;
+            speed = -12;
             spawn.rateSpawn = 0.2f;
         }
         else if (player.score > 20) {
-            speed = -12;
+            speed = -10;
             spawn.rateSpawn = 0.4f;
         }
         else if (player.score > 10) {
-            speed = -10;
+            speed = -8;
             spawn.rateSpawn = 0.6f;
         }
 

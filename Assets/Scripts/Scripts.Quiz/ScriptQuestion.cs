@@ -10,7 +10,7 @@ public class ScriptQuestion : MonoBehaviour{
     private GameObject[] opcoes;
     private int val1, val2, resp;
     private int[] op;
-    private float time = 5;
+    private float time = 10;
 
     // Start is called before the first frame update
     void Start(){
