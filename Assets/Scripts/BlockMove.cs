@@ -24,15 +24,15 @@ public class BlockMove : MonoBehaviour
     {
         if (player.score > 30 ) {
             speed = -12;
-            spawn.rateSpawn = 0.2f;
+            spawn.rateSpawn = 0.4f;
         }
         else if (player.score > 20) {
             speed = -10;
-            spawn.rateSpawn = 0.4f;
+            spawn.rateSpawn = 0.6f;
         }
         else if (player.score > 10) {
             speed = -8;
-            spawn.rateSpawn = 0.6f;
+            spawn.rateSpawn = 0.8f;
         }
 
         transform.position += new Vector3 (speed, 0, transform.position.y) * Time.deltaTime;

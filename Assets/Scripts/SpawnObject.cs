@@ -28,6 +28,7 @@ public class SpawnObject : MonoBehaviour
     void Update()
     {
         currentSpawn += Time.deltaTime;
+        
         if(currentSpawn > rateSpawn) {
             currentSpawn = 0;
             SpawnBlocos();
