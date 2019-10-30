@@ -15,10 +15,16 @@ public class Difficulty : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    public void verificaDificuldade(int posicao){
+    public void verificaDificuldade(int posicao)
+    {
         PlayerPrefs.SetInt("dificuldade", posicao);
-        SceneManager.LoadScene("playgame");        
+        if (PlayerPrefs.GetInt("tipo") == 1)
+        {
+            SceneManager.LoadScene("playgame");
+        } else {
+            SceneManager.LoadScene("mathematic");
+        }
     }
 }

@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/startgame.unity
-    guid: 5d52acb2cd62e6043aa6a57b3864eddd
+    path: Assets/Scenes/homegame.unity
+    guid: 30079342a0504964e8bd249942d5d99a
+  - enabled: 1
+    path: Assets/Scenes/gameoption.unity
+    guid: 4c5f0842c8bd72f48bc56935da965059
   - enabled: 1
     path: Assets/Scenes/operacoes.unity
     guid: 563080faaf5a38d418bef7061d6f53fc
@@ -20,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/mathematic.unity
     guid: fb73db59a80bdb4419913ad3afb161d0
+  - enabled: 1
+    path: Assets/Scenes/congratulations.unity
+    guid: 840a67f7f65a6e948a9d98a0cdcceb10
   - enabled: 1
     path: Assets/Scenes/gameover.unity
     guid: bbf9a31bb60085443813e46ae37e8923

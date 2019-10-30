@@ -7,15 +7,18 @@ using UnityEngine.SceneManagement;
 public class ScriptQuestion : MonoBehaviour
 {
 
-    public Text questionText, timeText;
+    public Text questionText, timeText, pontuacao;
     private GameObject[] opcoes;
     private int val1, val2, resp;
     private int[] op;
+    private float tempojogado;
     private float time = 10;
 
     // Start is called before the first frame update
     void Start()
     {
+        tempojogado = PlayerPrefs.GetFloat("tempoJogado");
+        print(PlayerPrefs.GetFloat("tempoJogado").ToString());
         op = new int[3];
         newQuestion();
         time = 10;
@@ -36,20 +39,25 @@ public class ScriptQuestion : MonoBehaviour
         opcoes[2].GetComponentInChildren<Text>().text = "" + op[2];
     }
 
-    private void operacao () {
-        if (PlayerPrefs.GetInt("operacoes") == 0) {
+    private void operacao()
+    {
+        if (PlayerPrefs.GetInt("operacoes") == 0)
+        {
             questionText.text = "Quanto é " + val1 + " + " + val2;
             resp = val1 + val2;
         }
-        if (PlayerPrefs.GetInt("operacoes") == 1) {
+        if (PlayerPrefs.GetInt("operacoes") == 1)
+        {
             questionText.text = "Quanto é " + val1 + " - " + val2;
             resp = val1 - val2;
         }
-        if (PlayerPrefs.GetInt("operacoes") == 2) {
+        if (PlayerPrefs.GetInt("operacoes") == 2)
+        {
             questionText.text = "Quanto é " + val1 + " ÷ " + val2;
             resp = val1 / val2;
         }
-        if (PlayerPrefs.GetInt("operacoes") == 3) {
+        if (PlayerPrefs.GetInt("operacoes") == 3)
+        {
             questionText.text = "Quanto é " + val1 + " x " + val2;
             resp = val1 * val2;
         }
@@ -73,7 +81,7 @@ public class ScriptQuestion : MonoBehaviour
             val2 = Random.Range(0, 1000);
         }
     }
-    
+
     private void rangeQuestion()
     {
         if (PlayerPrefs.GetInt("dificuldade") == 0)
@@ -124,8 +132,10 @@ public class ScriptQuestion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        tempojogado += Time.deltaTime;
+        PlayerPrefs.SetFloat("tempoJogado", tempojogado);
         timeText.text = "Tempo: " + time.ToString("F0");
-
+        pontuacao.text = "Pontuação: " + PlayerPrefs.GetInt("score").ToString("F0");
         time -= Time.deltaTime;
         if (time < 0)
         {
@@ -138,7 +148,15 @@ public class ScriptQuestion : MonoBehaviour
     {
         if (opcoes[posicao].GetComponentInChildren<Text>().text == resp.ToString())
         {
-            SceneManager.LoadScene("playgame");
+            if (PlayerPrefs.GetInt("tipo") == 1)
+            {
+                SceneManager.LoadScene("playgame");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score")+10);
+                SceneManager.LoadScene("mathematic");
+            }
         }
         else
         {

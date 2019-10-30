@@ -15,7 +15,7 @@ public class MoveOffSet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        offset += 0.001f;       
+        float offset = Time.time * 0.05f ;       
         currentMaterial.SetTextureOffset ("_MainTex", new Vector2 (offset*speed, 0));
     }
 }

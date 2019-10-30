@@ -1,24 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayGame : MonoBehaviour
 {
-    
-    public TextMesh recorde;
+    private GameObject[] exit;
+    public Text recorde;
     // Start is called before the first frame update
     void Start()
-    {        
-        recorde.text = PlayerPrefs.GetInt("recorde").ToString();
+    {
+        PlayerPrefs.SetInt("passou", 0);
         PlayerPrefs.SetInt("score", 0);
+        exit = GameObject.FindGameObjectsWithTag("exit");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")){
-            SceneManager.LoadScene("operacoes");
+        recorde.text = "Record: " + PlayerPrefs.GetInt("recorde").ToString();
+    }
+    public void opcoes(int opcoes)
+    {
+        if (opcoes == 1)
+        {
+            SceneManager.LoadScene("gameoption");
         }
+        if (opcoes == 2)
+            Application.Quit();
     }
 }
