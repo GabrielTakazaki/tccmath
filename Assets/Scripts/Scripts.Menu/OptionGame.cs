@@ -17,7 +17,12 @@ public class OptionGame : MonoBehaviour
     {
     }
     public void verificaOperacao(int posicao){
-        PlayerPrefs.SetInt("tipo", posicao);
-        SceneManager.LoadScene("operacoes");        
+        if (posicao == 3) {
+            SceneManager.LoadScene("homegame");
+        }
+        else {
+            PlayerPrefs.SetInt("tipo", posicao);
+            SceneManager.LoadScene("operacoes");
+        }    
     }
 }

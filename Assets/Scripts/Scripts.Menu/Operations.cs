@@ -19,7 +19,13 @@ public class Operations : MonoBehaviour
         
     }
     public void verificaOperacao(int posicao){
-        PlayerPrefs.SetInt("operacoes", posicao);
-        SceneManager.LoadScene("dificulty");        
+        if (posicao == 5) {
+            SceneManager.LoadScene("gameoption");
+        }
+        else {
+            PlayerPrefs.SetInt("operacoes", posicao);
+            SceneManager.LoadScene("dificulty"); 
+        }
+               
     }
 }

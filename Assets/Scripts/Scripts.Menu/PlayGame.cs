@@ -19,7 +19,7 @@ public class PlayGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        recorde.text = "Record: " + PlayerPrefs.GetInt("recorde").ToString();
+        recorde.text = "Recorde: " + PlayerPrefs.GetInt("recorde").ToString();
     }
     public void opcoes(int opcoes)
     {

@@ -19,12 +19,17 @@ public class Difficulty : MonoBehaviour
     }
     public void verificaDificuldade(int posicao)
     {
-        PlayerPrefs.SetInt("dificuldade", posicao);
-        if (PlayerPrefs.GetInt("tipo") == 1)
-        {
-            SceneManager.LoadScene("playgame");
-        } else {
-            SceneManager.LoadScene("mathematic");
+        if (posicao == 4) {
+            SceneManager.LoadScene("operacoes");
+        }
+        else {
+            PlayerPrefs.SetInt("dificuldade", posicao);
+            if (PlayerPrefs.GetInt("tipo") == 1)
+            {
+                SceneManager.LoadScene("playgame");
+            } else {
+                SceneManager.LoadScene("mathematic");
+            }
         }
     }
 }

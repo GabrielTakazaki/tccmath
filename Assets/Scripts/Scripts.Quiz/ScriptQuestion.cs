@@ -9,8 +9,8 @@ public class ScriptQuestion : MonoBehaviour
 
     public Text questionText, timeText, pontuacao;
     private GameObject[] opcoes;
-    private int val1, val2, resp;
-    private int[] op;
+    private int val1, val2, resp, ini, fim, tipoOperacao;
+    private int[] op, resposta;
     private float tempojogado;
     private float time = 10;
 
@@ -18,7 +18,7 @@ public class ScriptQuestion : MonoBehaviour
     void Start()
     {
         tempojogado = PlayerPrefs.GetFloat("tempoJogado");
-        print(PlayerPrefs.GetFloat("tempoJogado").ToString());
+        tipoOperacao = PlayerPrefs.GetInt("operacoes");
         op = new int[3];
         newQuestion();
         time = 10;
@@ -27,7 +27,6 @@ public class ScriptQuestion : MonoBehaviour
     private void newQuestion()
     {
         opcoes = GameObject.FindGameObjectsWithTag("opcoes");
-        time = 20;
         dificuldade();
         operacao();
         op[0] = resp;
@@ -38,98 +37,105 @@ public class ScriptQuestion : MonoBehaviour
         opcoes[1].GetComponentInChildren<Text>().text = "" + op[1];
         opcoes[2].GetComponentInChildren<Text>().text = "" + op[2];
     }
-
+    // 0 = Facil, 1 = Medio, 2 = Dificil
+    private void dificuldade()
+    {
+        if (PlayerPrefs.GetInt("dificuldade") == 1)
+        {
+            ini = 0;
+            fim = 11;
+            val1 = Random.Range(0, 11);
+            val2 = Random.Range(0, 11);
+        }
+        if (PlayerPrefs.GetInt("dificuldade") == 2)
+        {
+            ini = 0;
+            fim = 50;
+            val1 = Random.Range(0, 50);
+            val2 = Random.Range(0, 50);
+        }
+        if (PlayerPrefs.GetInt("dificuldade") == 3)
+        {
+            ini = 0;
+            fim = 1000;
+            val1 = Random.Range(0, 1000);
+            val2 = Random.Range(0, 1000);
+        }
+    }
+    // 0 = adicao, 1 = subtracao, 2 divisao, 3 multiplicacao
     private void operacao()
     {
-        if (PlayerPrefs.GetInt("operacoes") == 0)
+        if (tipoOperacao == 1)
         {
             questionText.text = "Quanto é " + val1 + " + " + val2;
             resp = val1 + val2;
         }
-        if (PlayerPrefs.GetInt("operacoes") == 1)
+        if (tipoOperacao == 2)
         {
             questionText.text = "Quanto é " + val1 + " - " + val2;
             resp = val1 - val2;
         }
-        if (PlayerPrefs.GetInt("operacoes") == 2)
+        if (tipoOperacao == 3)
         {
-            questionText.text = "Quanto é " + val1 + " ÷ " + val2;
-            resp = val1 / val2;
+            resposta = geraDivisao(val1, val2);
+            questionText.text = "Quanto é " + resposta[0] + " ÷ " + resposta[1];
+            resp = resposta[0]/resposta[1];
+            
         }
-        if (PlayerPrefs.GetInt("operacoes") == 3)
+        if (tipoOperacao == 4)
         {
             questionText.text = "Quanto é " + val1 + " x " + val2;
             resp = val1 * val2;
         }
     }
-
-    private void dificuldade()
-    {
-        if (PlayerPrefs.GetInt("dificuldade") == 0)
-        {
-            val1 = Random.Range(0, 11);
-            val2 = Random.Range(0, 11);
-        }
-        if (PlayerPrefs.GetInt("dificuldade") == 1)
-        {
-            val1 = Random.Range(0, 50);
-            val2 = Random.Range(0, 50);
-        }
-        if (PlayerPrefs.GetInt("dificuldade") == 2)
-        {
-            val1 = Random.Range(0, 1000);
-            val2 = Random.Range(0, 1000);
-        }
-    }
-
     private void rangeQuestion()
     {
-        if (PlayerPrefs.GetInt("dificuldade") == 0)
+        int var = 0;
+        do
         {
-            int var = 0;
-            do
-            {
-                var = Random.Range(0, 23);
-            } while (var == resp);
-            op[1] = var;
-            do
-            {
-                var = Random.Range(0, 23);
-            } while (var == resp || var == op[1]);
-            op[2] = var;
-        }
-        if (PlayerPrefs.GetInt("dificuldade") == 1)
+            var = numeroAleatorio();
+        } while (var == resp);
+        op[1] = var;
+        do
         {
-            int var = 0;
-            do
-            {
-                var = Random.Range(0, 100);
-            } while (var == resp);
-            op[1] = var;
-            do
-            {
-                var = Random.Range(0, 100);
-            } while (var == resp || var == op[1]);
-            op[2] = var;
-        }
-        if (PlayerPrefs.GetInt("dificuldade") == 2)
-        {
-            int var = 0;
-            do
-            {
-                var = Random.Range(0, 2000);
-            } while (var == resp);
-            op[1] = var;
-            do
-            {
-                var = Random.Range(0, 2000);
-            } while (var == resp || var == op[1]);
-            op[2] = var;
-        }
-
+            var = numeroAleatorio();
+        } while (var == resp || var == op[1]);
+        op[2] = var;
     }
 
     // Update is called once per frame
+    private int numeroAleatorio() {
+        int random1 = Random.Range(ini,fim);
+        int random2 = Random.Range(ini,fim);
+
+        if (tipoOperacao == 1) 
+            return random1 + random2;
+        
+        if (tipoOperacao == 2) 
+            return random1 - random2;
+
+        if (tipoOperacao == 3){
+
+            int[] numeroDivisao = geraDivisao(random1, random2);
+            return numeroDivisao[0] / numeroDivisao[1];
+        }
+        if (tipoOperacao == 4) 
+            return random1 * random2;
+
+        else {
+            return 0;
+        } 
+    }
+    private int[] geraDivisao(int x, int y) {
+        do {
+            x = Random.Range(1,fim);
+            y = Random.Range(1,fim);
+        } while (x < y || x % y != 0);
+        int[] vetorNumeros = new int[2];
+        vetorNumeros[0] = x;
+        vetorNumeros[1] = y;
+        return vetorNumeros;
+    }
     void Update()
     {
         tempojogado += Time.deltaTime;
@@ -139,7 +145,6 @@ public class ScriptQuestion : MonoBehaviour
         time -= Time.deltaTime;
         if (time < 0)
         {
-            print("Time" + time);
             SceneManager.LoadScene("gameover");
         }
     }
