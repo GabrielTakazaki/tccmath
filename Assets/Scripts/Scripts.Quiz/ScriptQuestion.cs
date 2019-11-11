@@ -126,6 +126,8 @@ public class ScriptQuestion : MonoBehaviour
             return 0;
         } 
     }
+    //Refaz o numero aleatorio por conta das divisões por zero e salva em um vetor
+    //para retornar a resposta com os números da divisão
     private int[] geraDivisao(int x, int y) {
         do {
             x = Random.Range(1,fim);
